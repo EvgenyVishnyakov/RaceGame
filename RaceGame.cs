@@ -26,10 +26,12 @@ public partial class RaceGame : Form
         StartPosition = FormStartPosition.CenterScreen;
         _soundplayer = new SoundPlayer(sound);
     }
+
     private void GetMusic()
     {
         _soundplayer.PlayLooping();
     }
+
     private void RaceGame_Load(object sender, EventArgs e)
     {
         GetMusic();
@@ -42,10 +44,11 @@ public partial class RaceGame : Form
         timerTowardCars.Stop();
         panelMenu.Show();
     }
+
     private void timerRoad_Tick(object sender, EventArgs e)
     {
         labelCoins.Text = "Coins: " + user.AmountOfCoins;
-        labelScore.Text = "Score: " + korrectAmountOfScores;        
+        labelScore.Text = "Score: " + korrectAmountOfScores;
         for (int i = 0; i < LanesOne.Length; ++i)
         {
             LanesOne[i].Top += carSpeed;
@@ -60,6 +63,7 @@ public partial class RaceGame : Form
                 user.GetScores(korrectAmountOfScores);
             }
         }
+
         for (int i = 0; i < LanesTwo.Length; ++i)
         {
             LanesTwo[i].Top += carSpeed;
@@ -73,6 +77,7 @@ public partial class RaceGame : Form
         Coin_3();
         coinsCollect();
     }
+
     private void Coin_3()
     {
         Coin3.Top += carSpeed;
@@ -82,6 +87,7 @@ public partial class RaceGame : Form
             Coin3.Left = random.Next(1, panelGame.Width - 3 * Coin3.Width);
         }
     }
+
     private void Coin_2()
     {
         Coin2.Top += carSpeed;
@@ -91,6 +97,7 @@ public partial class RaceGame : Form
             Coin2.Left = random.Next(1, panelGame.Width - 3 * Coin2.Width);
         }
     }
+
     private void Coin_1()
     {
         Coin1.Top += carSpeed;
@@ -100,12 +107,14 @@ public partial class RaceGame : Form
             Coin1.Left = random.Next(1, panelGame.Width - 3 * Coin1.Width);
         }
     }
+
     void coinsCollect()
     {
         IsBoundsCoin1();
         IsBoundsCoin2();
         IsBoundCoin3();
     }
+
     private void IsBoundCoin3()
     {
         if (mainCar.Bounds.IntersectsWith(Coin3.Bounds))
@@ -116,6 +125,7 @@ public partial class RaceGame : Form
             Coin3.Left = placementCoins();
         }
     }
+
     private void IsBoundsCoin2()
     {
         if (mainCar.Bounds.IntersectsWith(Coin2.Bounds))
@@ -269,11 +279,11 @@ public partial class RaceGame : Form
     private void GetPlacementTowards3(EventArgs e)
     {
         towardCar3.Top = -towardCar3.Height;
-        towardCar3.Left = random.Next(Math.Abs(panelMenu.Width - GetTowards2Koordinate(e)));        
+        towardCar3.Left = random.Next(Math.Abs(panelMenu.Width - GetTowards2Koordinate(e)));
     }
     private void GetTowards2(EventArgs e)
     {
-        towardCar2.Top += carSpeed + random.Next(1,3);
+        towardCar2.Top += carSpeed + random.Next(1, 3);
         if (towardCar2.Top > Height)
         {
             GetPlacementTowards2(e);
@@ -282,7 +292,7 @@ public partial class RaceGame : Form
     private void GetPlacementTowards2(EventArgs e)
     {
         towardCar2.Top = -towardCar2.Height;
-        towardCar2.Left = random.Next(Math.Abs(panelMenu.Width - GetTowards1Koordinate(e)));        
+        towardCar2.Left = random.Next(Math.Abs(panelMenu.Width - GetTowards1Koordinate(e)));
     }
     private void GetTowards1(EventArgs e)
     {
@@ -295,7 +305,7 @@ public partial class RaceGame : Form
     private void GetPlacementTowards1(EventArgs e)
     {
         towardCar1.Top = -towardCar1.Height;
-        towardCar1.Left = random.Next(Math.Abs(panelMenu.Width - GetTowards3Koordinate(e)));     
+        towardCar1.Left = random.Next(Math.Abs(panelMenu.Width - GetTowards3Koordinate(e)));
     }
     private int GetTowards1Koordinate(EventArgs e)
     {
@@ -320,7 +330,7 @@ public partial class RaceGame : Form
     private bool IsMainCareBoundsTowards1()
     {
         return mainCar.Bounds.IntersectsWith(towardCar1.Bounds);
-    }    
+    }
     private void GameOver(EventArgs e)
     {
         carSpeed = 0;
