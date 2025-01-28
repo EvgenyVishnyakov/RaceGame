@@ -268,6 +268,7 @@ public partial class RaceGame : Form
             GameOver(e);
         }
     }
+
     private void GetTowards3(EventArgs e)
     {
         towardCar3.Top += carSpeed + random.Next(3, 5);
@@ -276,11 +277,13 @@ public partial class RaceGame : Form
             GetPlacementTowards3(e);
         }
     }
+
     private void GetPlacementTowards3(EventArgs e)
     {
         towardCar3.Top = -towardCar3.Height;
         towardCar3.Left = random.Next(Math.Abs(panelMenu.Width - GetTowards2Koordinate(e)));
     }
+
     private void GetTowards2(EventArgs e)
     {
         towardCar2.Top += carSpeed + random.Next(1, 3);
@@ -289,11 +292,13 @@ public partial class RaceGame : Form
             GetPlacementTowards2(e);
         }
     }
+
     private void GetPlacementTowards2(EventArgs e)
     {
         towardCar2.Top = -towardCar2.Height;
         towardCar2.Left = random.Next(Math.Abs(panelMenu.Width - GetTowards1Koordinate(e)));
     }
+
     private void GetTowards1(EventArgs e)
     {
         towardCar1.Top += carSpeed + random.Next(4, 8);
@@ -302,15 +307,18 @@ public partial class RaceGame : Form
             GetPlacementTowards1(e);
         }
     }
+
     private void GetPlacementTowards1(EventArgs e)
     {
         towardCar1.Top = -towardCar1.Height;
         towardCar1.Left = random.Next(Math.Abs(panelMenu.Width - GetTowards3Koordinate(e)));
     }
+
     private int GetTowards1Koordinate(EventArgs e)
     {
         return towardCar1.Location.X;
     }
+
     private int GetTowards2Koordinate(EventArgs e)
     {
         return towardCar2.Location.X;
